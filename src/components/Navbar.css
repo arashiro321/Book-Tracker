@@ -1,0 +1,36 @@
+.navbar {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+}
+
+.navbar > .nav-items > a {
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    margin: 15px;
+    position: relative;
+    opacity: 0.9;
+}
+
+.navbar > .nav-items > a:hover {
+    opacity: 1;
+}
+
+.navbar > .nav-items > a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    transition: all .45s;
+}
+
+.navbar > .nav-items > a:hover::before {
+    width: 100%;
+
+}
