@@ -3,19 +3,21 @@ import { Link, useNavigate } from 'react-router-dom'
 import './Navbar.css'
 
 const Navbar = () => {
-    // const navigate = useNavigate()
-    // const Logout = async (e) => {
-    //     e.preventDefault()
-    //     localStorage.clear()
-    //     navigate("/")
-    // }
+    const navigate = useNavigate()
+    const Logout = async () => {
+        localStorage.clear()
+        navigate("/")
+    }
     return (
         <div className='navbar'>
             <div className="nav-items">
                 <Link to='/homepage'>Home</Link>                             
                 <Link to='/bookregistration'>Register Book</Link>             
-                <Link to='/removeBook'>Remove Book</Link>
-                {/* <a onClick={Logout()}>Logout</a> */}
+                <div className="txt-navbar">
+                    <span className='txt-navbar'>{localStorage.getItem("userEmail")}</span>
+                    <br></br>
+                    <button className='change-status-btn' onClick={() => Logout()}>Logout</button>
+                </div>
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../../styles.css'
 import { Link, useNavigate   } from 'react-router-dom'
 import api from '../../Api.js'
@@ -9,10 +9,21 @@ const BookRegistration = () => {
   const [title, setBookTitle] = useState("")
   const [author, setBookAuthor] = useState("")
   const [dueDate, setBookDueDate] = useState("")
-  const [status, setBookStatus] = useState("")
+  const [status, setBookStatus] = useState(1)
   const [note, setBookNote] = useState("")
+  const [bookStatusList, setBookStatusList] = useState([]);
+
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    listBooksStatus()
+  }, [])
+
+  const listBooksStatus = async () => {
+    const bookRes = await api.get('/bookstatus');
+    setBookStatusList(bookRes.data.booksStatus)
+  }
 
   const register = async (e) => {
     e.preventDefault()
@@ -30,7 +41,7 @@ const BookRegistration = () => {
     if(res.data.status !== 201){
     window.alert(res.data.error)
     }else{
-    // navigate("/homepage")
+      navigate("/homepage")
     }
 }
 
@@ -75,14 +86,19 @@ const BookRegistration = () => {
             </div>
 
             <div className="wrap-input">
-              <input 
-                className={status !== "" ? "has-val input" : "input"} 
-                type="number" 
-                value={status}
-                onChange={e => setBookStatus(e.target.value)}
-              />
-              <span className="focus-input" data-placeholder="Status: 1- Want to Read 2- Reading 3- Read"></span>
-            </div>
+              <label>
+              <span className="focus-input" data-placeholder="Status"></span>
+              <br /> <br />
+                <select className='input' value={status} onChange={e => setBookStatus(e.target.value)}>
+                  { bookStatusList.map((status, index) => {
+                    return(
+                      <option className='txt1' value={status.STATUS_ID}>{status.STATUS_NAME}</option>
+                    )
+                  })
+                  }
+                </select>
+              </label>
+            </div>  
 
             <div className="wrap-input">
               <input 

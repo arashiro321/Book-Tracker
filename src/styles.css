@@ -33,7 +33,7 @@
 }
 
 .wrap-table-component{
-    width: 1000px;
+    width: 45%;
     background-color: #333;
     border-radius: 10px;
     overflow: hidden;
@@ -226,6 +226,25 @@
     border-bottom: 1px solid #ddd;
 }
 
-.wrap-table > tr:hover{
-    background-color: #ddd;
+th, td{
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.delete-btn{
+    color: red;
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.change-status-btn{
+    color: #f1ee16;
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    text-decoration: underline;
+    cursor: pointer;
 }

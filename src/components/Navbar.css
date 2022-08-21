@@ -34,3 +34,19 @@
     width: 100%;
 
 }
+
+.navbar > .nav-items > .txt-navbar{
+    display: inline;
+    float: right;
+    color: #fff;
+    position: fixed;
+    right: 5px;
+}
+
+.navbar > .nav-items > .txt-navbar > .change-status-btn{
+    display: inline;
+    float: right;
+    color: #fff;
+    position: fixed;
+    right: 5px;
+}
